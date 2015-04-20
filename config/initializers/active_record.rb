@@ -6,7 +6,7 @@ module ActiveRecord
     #-----
     def self.search(in_parameters = {})
       return all if (in_parameters.blank?)
-      conditions = ['1']
+      conditions = []
       parameters = in_parameters.delete_if { |key, v| [].include?(key) or v.blank? or v.empty? or (v.class == Array and (v - ['']).empty?) }
       parameters.each do |k, v|
         Rails.logger.info("K:#{k}=#{v}|blank:#{v.blank?}|empty:#{v.empty?}|#{v.inspect}")
@@ -23,7 +23,7 @@ module ActiveRecord
             conditions.push("%#{v}%")
         end
       end
-      where(conditions)
+      where(conditions) unless (conditions.blank?)
     end
 
     ##
