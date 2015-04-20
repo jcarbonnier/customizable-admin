@@ -1,8 +1,24 @@
 = CustomizableAdmin
 
 CustomizableAdmin is a Rails engine that provides an easy-to-use interface for managing your data.
+This gem uses :
+- devise
+- cancancan
+- will_paginate
+- simple_form
+- ancestry
+- bootstrap-sass
 
 == Installation
 
-gem 'customizable_admin', git: 'jcarbonnier/customizable_admin'
+1/ Add to your Gemfile : gem 'customizable_admin', github: 'jcarbonnier/customizable-admin'
+2/ bundle install
+3/ rails g customizable_admin:install
+4/ rake customizable_admin:install:migrations
+5/ rake db:migrate
+6/ In config/routes.rb, add at the end of the file : mount CustomizableAdmin::Engine => "/"
 
+== Customization
+
+File /assets/application.js : remove all includes and replace them with :
+//= require 'customizable_admin/application'
