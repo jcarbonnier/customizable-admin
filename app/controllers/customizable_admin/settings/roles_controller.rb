@@ -57,8 +57,8 @@ module CustomizableAdmin
 
     def initialize_permissions()
       @permissions = (@item.id == 1) ?
-          Settings::Permission.where("id=1").order('subject_class, id') :
-          Settings::Permission.where("id!=1").order('subject_class, id')
+          Settings::Permission.where("id=1").order("#{Settings::Permission.table_name}.subject_class, #{Settings::Permission.table_name}.id") :
+          Settings::Permission.where("id!=1").order("#{Settings::Permission.table_name}.subject_class, #{Settings::Permission.table_name}.id")
     end
 
     def resource_params
