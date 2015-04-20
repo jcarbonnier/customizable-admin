@@ -13,12 +13,14 @@ module ActiveRecord
         case k
           when 'action', 'controller', '_', 'per_page', 'page', 'utf8', 'sort', 'direction', 'format', 'columns'
           when 'id'
+            conditions[0] ||= ''
             conditions[0] << " AND #{self.table_name}.#{k}=?"
             conditions.push(v)
           # when 'role_ids'
           #   conditions[0] << " AND roles_users.role_id in (?)"
           #   conditions.push(v)
           else
+            conditions[0] ||= ''
             conditions[0] << " AND #{self.table_name}.#{k} like ?"
             conditions.push("%#{v}%")
         end
