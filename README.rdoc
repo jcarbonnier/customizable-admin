@@ -22,3 +22,8 @@ This gem uses :
 
 File /assets/application.js : remove all includes and replace them with :
 //= require 'customizable_admin/application'
+
+Now you can check : http://localhost:3000/users/sign_in 
+Login : admin@demo.com
+Password : demo-admin
+
