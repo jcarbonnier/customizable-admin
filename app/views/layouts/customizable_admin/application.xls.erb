@@ -1,0 +1,52 @@
+<html xmlns:x="urn:schemas-microsoft-com:office:excel">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name=ProgId content=Excel.Sheet>
+  <!--[if gte mso 9]>
+  <xml>
+      <x:WorksheetOptions>
+          <x:ProtectScenarios>False</x:ProtectScenarios>
+      </x:WorksheetOptions>
+  </xml><![endif]-->
+  <style>
+      .bold {
+          font-weight: 700;
+      }
+
+      .style0 {
+          mso-number-format: General;
+          text-align: general;
+          vertical-align: bottom;
+          white-space: nowrap;
+          mso-rotate: 0;
+          mso-background-source: auto;
+          mso-pattern: auto;
+          color: black;
+          mso-font-charset: 0;
+          mso-protection: locked visible;
+          mso-style-name: Normal;
+          mso-style-id: 0;
+      }
+
+      .xls_numbers {
+          mso-style-parent: style0;
+      }
+  </style>
+</head>
+<body>
+<table x:str border=1 cellpadding=0 cellspacing=0 style='border-collapse: collapse;table-layout:fixed;'>
+  <tr>
+    <% for r_key in params[:columns] %>
+        <td><%= @current_model.human_attribute_name(r_key) %></td>
+    <% end %>
+  </tr>
+  <% for item in @items %>
+      <tr>
+        <% for r_key in params[:columns] %>
+            <td><%= item.send(r_key) %></td>
+        <% end %>
+      </tr>
+  <% end %>
+</table>
+</body>
+</html>

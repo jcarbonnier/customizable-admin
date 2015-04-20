@@ -1,0 +1,33 @@
+<div class="page-header clearfix">
+  <h1>
+    <%= @current_model.model_name.human.pluralize %>
+    <div class="action-buttons-bar pull-right">
+      <%= link_to(glyphicon(:chevron_left),
+                  settings_permissions_path(keep_filters: 1), {
+                      :title => t('commons.back'),
+                      :class => 'btn btn-group btn-primary has-tooltip'}) %>
+      <%= link_to(glyphicon(:pencil),
+                  edit_settings_permission_path(@item), {
+                      :title => t('commons.edit'),
+                      :class => 'btn btn-group btn-primary has-tooltip'}) %>
+    </div>
+  </h1>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <div class="panel-title">
+      <h2><%= t('commons.controller.show.panel_heading') %></h2>
+      <p class="small">
+        <%= t("commons.controller.show.panel_introduction_html") %>
+      </p>
+    </div>
+  </div>
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+      <% for field in [:name, :subject_class, :subject_id, :action, :description] -%>
+          <dt><%= @current_model.human_attribute_name(field.to_s) %></dt>
+          <dd><%= @item.send(field) %>&nbsp;</dd>
+      <% end -%>
+    </dl>
+  </div>
+</div>

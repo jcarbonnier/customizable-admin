@@ -1,0 +1,52 @@
+<div class="page-header clearfix">
+  <h1>
+    <%= t("commons.controller.h1") %>
+    <span id="total_items" class="badge active"><%#= @items.total_entries %></span>
+  </h1>
+
+  <p>
+    <%= t("commons.controller.h1_introduction_html") %>
+  </p>
+</div>
+
+<form id="manage_positions_form" action="update_positions" method="post">
+  <input type="hidden" name="<%= request_forgery_protection_token %>" value="<%= form_authenticity_token %>"/>
+  <ul id="items" class="list-group sortable">
+    <%= render(:partial => 'customizable_admin/partials/manage_positions_item',
+               :collection => @items.select { |i| (i.is_root?) },
+               :locals => {:depth => 0}) %>
+  </ul>
+</form>
+
+<script type="text/javascript">
+    $(function () {
+        // Manage position update
+        $(".sortable").sortable({
+            placeholder: "placeholder-line",
+            stop: function (e, ui) {
+                $('.positions').each(function (idx, i) {
+                    $(i).val(idx);
+                });
+                $('#manage_positions_form').submit();
+            }
+        });
+        // Submit form
+        $('#manage_positions_form').submit(function () {
+            $('#items').parents('.panel').attr('style', 'position: relative');
+            $('#items').parents('.panel').overlay('show');
+            $.post($(this).attr('action'), $(this).serialize(), null, 'html')
+                    .fail(function (data) {
+                        trace("fail");
+                    })
+                    .done(function (responseText) {
+                        trace("done");
+                        $('#items').html(responseText);
+                    })
+                    .always(function () {
+                        trace("always");
+                        $('.overlay').remove();
+                    });
+            return false;
+        });
+    });
+</script>

@@ -1,0 +1,32 @@
+<% if (menu.is_root?) %>
+    <!-- Menu -->
+    <%= link_to(eval(menu.class_name), class: 'list-group-item') do %>
+        <%= glyphicon(menu.glyphicon_name) %>
+        <span class="text"><%= menu.name %></span>
+    <% end if (menu.is_childless?) %>
+    <% if (menu.has_children?) %>
+        <!-- Menu -->
+        <%= link_to("#collapse#{menu.id}",
+                    class: 'list-group-item',
+                    'data-toggle' => "collapse",
+                    'data-parent' => "#accordion",
+                    'aria-expanded' => "true",
+                    'aria-controls' => "collapse#{menu.id}") do %>
+            <%= glyphicon(menu.glyphicon_name) %>
+            <span class="text"><%= menu.name %></span>
+            <%= glyphicon(:chevron_left, 'pull-right') %>
+        <% end %>
+    <% end %>
+<% end %>
+<% if (menu.children) %>
+    <div id="collapse<%= menu.id %>" class="collapse" role="tabpanel" aria-labelledby="heading<%= menu.id %>">
+      <% for submenu in menu.children.order(:position) %>
+          <%= link_to(submenu.name,
+                      submenu.class_name.start_with?('CustomizableAdmin') ?
+                              customizable_admin.url_for(submenu.class_name.safe_constantize) :
+                              main_app.url_for(submenu.class_name.safe_constantize),
+                      class: "list-group-item") unless (submenu.class_name.blank?) %>
+          <%#= link_to(CustomizableAdmin::Settings::Role.model_name.human.pluralize, roles_path, class: "list-group-item") %>
+      <% end %>
+    </div>
+<% end %>

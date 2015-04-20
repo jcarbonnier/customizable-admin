@@ -1,0 +1,22 @@
+<div class="modal <%= 'fade' if (local_assigns.has_key?(:fading) and fading) %>" id="<%= id %>" tabindex="-1" role="dialog" aria-labelledby="<%= id %>Label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><%= glyphicon(:remove) %></button>
+        <h3 class="modal-title"><%= modal_title %></h3>
+      </div>
+      <div class="modal-body">
+        <%= render(:partial => modal_body_partial) if (local_assigns.has_key? :modal_body_partial) %>
+        <%= modal_body if (local_assigns.has_key? :modal_body) %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><%= t("buttons.close_modal") %></button>
+        <%# for button in buttons %>
+        <!--<button type="button" name="<%#= button %>" class="btn btn-default <%#= 'close' if (button == :close) %>" <%#= 'data-dismiss="modal"' if (button == :close) %>>-->
+        <!--<span class="glyphicon glyphicon-<%#= (button == :close) ? 'remove' : button %>"></span> <%#= t("commons.buttons.#{button}") %>-->
+        <!--</button>-->
+        <%# end if local_assigns.has_key?(:buttons) %>
+      </div>
+    </div>
+  </div>
+</div>

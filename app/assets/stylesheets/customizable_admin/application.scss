@@ -1,0 +1,231 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree ./utils
+ *= require_self
+ */
+
+//----------------------------------------
+// Imports
+//----------------------------------------
+@import 'utils/variables';
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+//----------------------------------------
+// Generals
+//----------------------------------------
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 70px 0;
+  padding: 0;
+}
+
+header {
+  .navbar {
+    @include box-shadow(0 2px 6px rgba(0, 0, 0, 0.30));
+  }
+}
+
+main {
+  //  padding: 0px 0px 90px 0px;
+}
+
+footer {
+  //  padding: 10px 0;
+}
+
+//#form_search {
+//  input, textarea {
+//    color: $color-active;
+//    font-weight: bold;
+//  }
+//  select {
+//    font-weight: normal;
+//    color: $color-active;
+//  }
+//  select.selected {
+//    color: $color-active;
+//    font-weight: bold;
+//  }
+//  select.selected option {
+//    font-weight: normal;
+//    color: $color-active;
+//  }
+//  input::-webkit-input-placeholder {
+//    font-weight: normal;
+//    color: #B0B0B0;
+//  }
+//  input::-moz-placeholder {
+//    font-weight: normal;
+//    color: #B0B0B0;
+//  }
+//  input:-ms-input-placeholder {
+//    font-weight: normal;
+//    color: #B0B0B0;
+//  }
+//  input:-moz-placeholder {
+//    font-weight: normal;
+//    color: #B0B0B0;
+//  }
+//}
+
+//----------------------------------------
+// Utils
+//----------------------------------------
+.text-ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.active {
+  color: $alert-warning-text;
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 50%;
+}
+
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+
+//----------------------------------------
+// Bootstrap overrides
+//----------------------------------------
+.page-header {
+  margin-top: 0;
+  h1 {
+    color: $gray-light;
+    font-size: $font-size-h1;
+  }
+}
+
+.panel {
+  h1, h2, h3, h4, h5 {
+    margin: 0;
+  }
+  .panel-heading .panel-title {
+    p {
+      margin-top: 10px;
+      color: $gray-light;
+    }
+  }
+  @include box-shadow(0 1px 4px rgba(0, 0, 0, .15));
+}
+
+.table {
+  & > thead > tr > th {
+    border-bottom: 1px solid #ddd;
+  }
+  tr th.size-xs {
+    width: 90px;
+  }
+  tr th.size-s {
+    width: 130px;
+  }
+  tr th.size-m {
+    width: 170px;
+  }
+  tr th.size-l {
+    width: 210px;
+  }
+  tr th.size-xl {
+    width: 250px;
+  }
+  & > tbody > tr > td {
+    vertical-align: middle;
+  }
+}
+
+.badge {
+  vertical-align: top;
+  &.active {
+    background-color: $brand-primary;
+    color: #fff;
+  }
+}
+
+.modal-dialog {
+  z-index: 1041;
+  .modal-content {
+    border-radius: $border-radius-base;
+  }
+}
+
+.navbar {
+  margin-bottom: 0px;
+}
+
+.sidebar-left {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.list-group {
+  .list-group-item-no-padding {
+    padding: 0;
+  }
+}
+
+//----------------------------------------
+// jQuery
+//----------------------------------------
+.ui-sortable {
+  cursor: move;
+}
+
+////----------------------------------------
+//// Medias
+////----------------------------------------
+//@media (min-width: 768px) {
+//  .container {
+//    width: 750px
+//  }
+//}
+//
+//@media (min-width: 992px) {
+//  .container {
+//    width: 970px
+//  }
+//}
+//
+//@media (min-width: 1200px) {
+//  //  .container {
+//  //    width: 940px
+//  //  }
+//}

@@ -1,0 +1,20 @@
+// trace($('#items'));
+$('#items').html('<%= escape_javascript(render("index_items")) %>');
+$('#total_items').html(<%= @items.total_entries if (@items.length > 0) %>);
+$('#items th a, #items .pagination * a').on('click', function () {
+    $('#items').closest('.panel').attr('style', 'position: relative');
+    $('#items').closest('.panel').overlay();
+    $.get(this.href, null, null, 'script')
+            .done(function () {
+                trace('Done !!');
+            })
+            .fail(function () {
+                trace("Fail !!");
+            })
+            .always(function () {
+                trace("Reset !!");
+                $('.overlay').remove();
+            })
+    return false;
+});
+$("a[rel~=tooltip], .has-tooltip").tooltip({container: 'body'})

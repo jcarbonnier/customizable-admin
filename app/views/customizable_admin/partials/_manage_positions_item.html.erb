@@ -1,0 +1,8 @@
+<li class="list-group-item <%= 'text-danger' if depth == 0 %>">
+  <input type="hidden" name="sortable_list[][positions]" value="<%= manage_positions_item.position %>" class="positions"/>
+  <input type="hidden" name="sortable_list[][ids]" value="<%= manage_positions_item.id %>"/>
+  <%= "-----" * depth %> <%= manage_positions_item.name %>
+</li>
+<%= render(:partial => 'customizable_admin/partials/manage_positions_item',
+           :collection => manage_positions_item.children.order(:position),
+           :locals => {:depth => depth+1}) %>

@@ -1,0 +1,21 @@
+<tr>
+  <td>
+    <%= link_to(glyphicon(:pencil),
+                edit_settings_menu_path(index_child),
+                :class => 'btn btn-default btn-circle btn-sm has-tooltip',
+                :title => t('commons.edit'),
+                'data-placement' => 'right') %>
+  </td>
+  <td><%= h index_child.id %></td>
+  <td>
+    <%= link_to(settings_menu_path(index_child),
+                :class => 'has-tooltip',
+                'title' => t('commons.show'),
+                'data-placement' => 'right') do %>
+        <%= '----------' * depth %> <%= h glyphicon(index_child.glyphicon_name) + " " + index_child.name %>
+    <% end %>
+  </td>
+  <td><%= h index_child.class_name %></td>
+</tr>
+
+<%= render(partial: 'index_child', collection: index_child.children.order(:position), locals: {depth: depth+1}) %>

@@ -1,0 +1,81 @@
+<div class="page-header clearfix">
+  <h1>
+    <%= @current_model.model_name.human.pluralize %>
+
+    <div class="action-bar pull-right">
+      <%= link_to(glyphicon(:chevron_left),
+                  settings_users_path(keep_filters: 1), {
+                      :title => t('commons.back'),
+                      :class => 'btn btn-group btn-primary has-tooltip'}) %>
+      <%= link_to(glyphicon(:pencil),
+                  edit_settings_user_path(@item), {
+                      :title => t('commons.edit'),
+                      :class => 'btn btn-group btn-primary has-tooltip'}) %>
+      <%= link_to(glyphicon(:option_horizontal),
+                  permissions_settings_user_path(@item), {
+                      :title => t('commons.permissions'),
+                      :class => 'btn btn-group btn-primary has-tooltip'}) %>
+    </div>
+  </h1>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <div class="panel-title">
+      <h2><%= t('commons.controller.show.panel_heading') %></h2>
+
+      <p class="small">
+        <%= t("commons.controller.show.panel_introduction_html") %>
+      </p>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3>Informations</h3>
+        <hr/>
+        <dl class="dl-horizontal">
+          <% for field in [:civility, :firstname, :lastname, :pseudonym] -%>
+              <dt><%= @current_model.human_attribute_name(field.to_s) %></dt>
+              <dd><%= @item.send(field) %>&nbsp;</dd>
+          <% end -%>
+          <dt><%= @current_model.human_attribute_name(:email) %></dt>
+          <dd><%= mail_to(@item.email) %>&nbsp;</dd>
+        </dl>
+      </div>
+      <div class="col-sm-6">
+        <h3>Devise</h3>
+        <hr/>
+        <dl class="dl-horizontal">
+          <% for field in [:created_at, :confirmed_at, :sign_in_count, :last_sign_in_at] -%>
+              <dt><%= @current_model.human_attribute_name(field.to_s) %></dt>
+              <dd><%= (field.to_s =~ /_at$/ and !@item.send(field).blank?) ?
+                              I18n.localize(@item.send(field)) :
+                              @item.send(field) %>&nbsp;</dd>
+          <% end -%>
+        </dl>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <h3><%= CustomizableAdmin::Settings::Role.model_name.human.pluralize %></h3>
+        <hr/>
+        <dl class="dl-horizontal">
+          <% for role in @item.roles -%>
+              <dt><%= role.name %></dt>
+              <dd><%= role.id %>&nbsp;</dd>
+          <% end -%>
+        </dl>
+      </div>
+      <div class="col-sm-6">
+        <h3>Permissions</h3>
+        <hr/>
+        <dl class="dl-horizontal">
+          <% for permission in @item.permissions -%>
+              <dt><%= permission.name %></dt>
+              <dd><%= permission.description %>&nbsp;</dd>
+          <% end -%>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>

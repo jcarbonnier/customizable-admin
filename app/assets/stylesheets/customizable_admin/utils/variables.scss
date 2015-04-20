@@ -1,0 +1,35 @@
+//----------------------------------------
+// Bootstrap overrides
+//----------------------------------------
+// Colors
+$brand-primary: #4285F4;
+$gray-base: #333;
+// Scaffolding
+$body-bg: #edecec;
+// Typography
+$font-family-base: 'roboto';
+$font-size-base: 14px;
+$font-size-h1: floor(($font-size-base * 1.8));
+$font-size-h2: floor(($font-size-base * 1.6));
+$font-size-h3: floor(($font-size-base * 1.4));
+$font-size-h4: floor(($font-size-base * 1.2));
+$font-size-h5: floor(($font-size-base));
+// Components
+$border-radius-base: 0px;
+$border-radius-small: 0px;
+// Navbar
+$navbar-default-color: #fff;
+$navbar-default-bg: darken(#4285F4, 6.5%);
+$navbar-default-link-color: #F0F0F0;
+$navbar-default-link-hover-color: #fff;
+$navbar-default-link-active-color: $navbar-default-link-hover-color;
+// Panel
+$panel-heading-padding: 25px;
+$panel-default-border: 0;
+$panel-default-heading-bg: #fff;
+// Modals
+$modal-backdrop-opacity: 0.35;
+// List group
+$list-group-border: none;
+// Breadcrumbs
+$breadcrumb-bg: #fff;

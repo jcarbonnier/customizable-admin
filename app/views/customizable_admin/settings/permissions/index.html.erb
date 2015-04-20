@@ -1,0 +1,73 @@
+<div class="page-header clearfix">
+  <h1>
+    <%= @current_model.model_name.human.pluralize %>
+    <span id="total_items" class="badge active"><%= @items.total_entries %></span>
+
+    <div class="action-buttons-bar pull-right">
+      <%= link_to(glyphicon(:plus),
+                  new_settings_permission_path(),
+                  :title => t("commons.create"),
+                  :class => 'btn btn-primary has-tooltip') %>
+      <%= link_to(glyphicon(:refresh),
+                  setup_actions_controllers_db_settings_permissions_path(),
+                  :title => t("commons.refresh"),
+                  :class => 'btn btn-primary has-tooltip') %>
+      <%= link_to(glyphicon(:export), '#',
+                  :title => t("commons.export"),
+                  :class => 'btn btn-primary has-tooltip',
+                  'data-toggle' => 'modal',
+                  'data-target' => '#export_columns') %>
+    </div>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-10">
+    <div id="accordion" class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <div class="panel-title">
+          <h2><%= t('commons.controller.index.panel_heading') %></h2>
+
+          <p class="small">
+            <%= t("commons.controller.index.panel_introduction_html") %>
+          </p>
+        </div>
+      </div>
+      <div id="items">
+        <%= render(:partial => 'index_items') %>
+      </div>
+    </div>
+
+    <!-- Modal popups -->
+    <%= render(:partial => 'customizable_admin/partials/popup_modal', :locals => {
+                                                                            :id => 'export_columns',
+                                                                            :fading => true,
+                                                                            :buttons => [:close],
+                                                                            :modal_title => t('commons.export_fields'),
+                                                                            :modal_body_partial => 'customizable_admin/partials/export_columns'}) %>
+
+  </div>
+  <div class="col-md-2">
+    <div id="accordion" class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <h4 class="panel-title">Filters</h4>
+      </div>
+      <div class="panel-body">
+        <div id="filters" class="small">
+          <%= simple_form_for(@current_model.new(@default_attrs), :html => {:action => controller_name, :method => 'get', :id => 'form_search', :class => 'form-horizontal'}) do |f| %>
+              <% for field in [:id, :name] %>
+                  <%= f.input field,
+                              required: false,
+                              wrapper: :horizontal_wl,
+                              placeholder: @current_model.human_attribute_name(field),
+                              input_html: {size: nil, class: 'input-sm'} %>
+              <% end %>
+              <button type="submit" class="btn btn-group-justified btn-info has-tooltip" title="<%= t('buttons.filter') %>" data-placement="left">
+                <%= t('buttons.filter_icon_html') %> <%= t('buttons.filter') %>
+              </button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

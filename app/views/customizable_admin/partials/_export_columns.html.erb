@@ -1,0 +1,18 @@
+<div id="export_columns" class="row">
+  <% for column_name in @current_model.column_names %>
+      <div class="col-xs-6">
+        <input type="checkbox" class="filters" name="columns[]" id="columns_<%= column_name %>" value="<%= column_name %>"/>
+        <label for="columns_<%= column_name %>"><%= @current_model.human_attribute_name column_name %></label>
+      </div>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <button type="button" class="btn btn-default pull-left" onclick="javascript:$('#export_columns').find('.filters').each(function(idx, e){ $(e).prop('checked', (!$(e).prop('checked'))); }); return false;">
+      <span class="glyphicon glyphicon-check"></span> Check all
+    </button>
+    <button type="button" class="btn btn-default pull-right" onclick="javascript: export_list(this.form);">
+      <span class="glyphicon glyphicon-export"></span> <%= t("commons.buttons.export") %>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,122 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+fr:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%e %b"
+      long: "%A %D %B %Y"
+      long_ordinal: "%e %B %Y"
+      only_day: "%e"
+      jquery_ui: "dd/mm/yy"
+    day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
+    abbr_day_names: [dim, lun, mar, mer, jeu, ven, sam]
+    month_names: [~, Janvier, Fevrier, Mars, Avril, Mai, Juin, Juillet, Août, Septembre, Octobre, Novembre, Decembre]
+    abbr_month_names: [~, jan., fev., mar., avr., mai, juin, juil., août, sept., oct., nov., dec.]
+    order:
+      - :day
+      - :month
+      - :year
+    day: jour
+    hours: Heure(s)
+    minutes: Minute(s)
+    provide_at: A remettre le
+    created_at: Cree le
+    updated_at: Modifie le
+    validated_at: Valide le
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      time: "%H:%M"
+      short: "%d %b "
+      long: "Le %A %d %B %Y à %H:%M"
+      long_ordinal: "%A %d %B %Y %H:%M:%S %Z"
+      only_second: "%S"
+      long_time: "Le %A %d %B %Y à %H:%M"
+      home: "%A %d %B"
+      date: "%d/%m/%Y"
+      complete: "%d/%m/%Y à %H:%M"
+    am: 'am'
+    pm: 'pm'
+  datetime:
+    distance_in_words:
+      half_a_minute: "30 secondes"
+      less_than_x_seconds:
+        zero:  "moins d'une seconde"
+        one:   "moins d'une seconde"
+        other: "moins de %{count} secondes"
+      x_seconds:
+        one:   "1 seconde"
+        other: "%{count} secondes"
+      less_than_x_minutes:
+        zero:  "moins d'une minute"
+        one:   "moins d'une minute"
+        other: "moins de %{count} minutes"
+      x_minutes:
+        one:   "1 minute"
+        other: "%{count} minutes"
+      about_x_hours:
+        one:   "environ une heure"
+        other: "environ %{count} heures"
+      x_days:
+        one:   "un jour"
+        other: "%{count} jours"
+      about_x_months:
+        one:   "environ un mois"
+        other: "environ %{count} mois"
+      x_months:
+        one:   "un mois"
+        other: "%{count} mois"
+      about_x_years:
+        one:   "environ un an"
+        other: "environ %{count} ans"
+      over_x_years:
+        one:   "plus d'un an"
+        other: "plus de %{count} ans"
+      almost_x_years:
+        one:   "presqu'un an"
+        other: "presque %{count} ans"
+    prompts:
+      year:   "Annee"
+      years:   "Annees"
+      month:  "Mois"
+      months: "Mois"
+      day:    "Jour"
+      days:  "Jours"
+      hour:   "Heure"
+      minute: "Minute"
+      second: "Seconde"
+  number:
+    format:
+      precision: 3
+      separator: ','
+      delimiter: ' '
+    currency:
+      format:
+        unit: '€'
+        precision: 2
+        format: '%n%u'
+    human:
+      format:
+        precision: 2
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: "octet"
+            other: "octet"
+          kb: "ko"
+          mb: "Mo"
+          gb: "Go"
+          tb: "To"
+  support:
+    array:
+      sentence_connector: 'et'
+      skip_last_comma: true
+      words_connector: ", "
+      two_words_connector: " et "
+      last_word_connector: " et "
+  will_paginate:
+    next_label: 'Suivante'
+    previous_label: 'Précédente'
+    page_gap: ' ... '
