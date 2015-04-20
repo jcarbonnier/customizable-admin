@@ -12,6 +12,7 @@ en:
     email: Envoyer un email
     edit: Editer la fiche
     create: Créer
+    refresh: Rafraichir
     delete: Effacer
     move: Gérer les positions
     export: Exporter
@@ -21,8 +22,13 @@ en:
       h1_introduction_html: "Retrouvez la liste des éléments enregistrés en base de données.<br/>Vous pouvez les rechercher et les filtrer à l'aide du formulaire ci-dessous."
       index:
         panel_heading: Liste des éléments
+        panel_introduction_html: "Retrouvez la liste des fiches enregistrées en base de données.<br/>Vous pouvez les rechercher et les filtrer à l'aide du formulaire."
       form:
         panel_heading: Formulaire
+        panel_introduction_html: "Créez ou éditez une fiche dans la base de données."
+      show:
+        panel_heading: Fiche
+        panel_introduction_html: "Retrouvez les données de la fiche enregistrées en base de données."
     shopping_cart: Ajouter au panier
     favored: Mes favoris
     wish_list: Ma liste de souhait
@@ -54,6 +60,7 @@ en:
       edit: Edition
       show: Fiche
       manage_positions: Gestion des positions
+      manage_permissions: Permissions
     admin:
       root: Administration
     root: Accueil
@@ -102,4 +109,3 @@ en:
         name: Nom
         created_at: Créé le
         updated_at: MAJ le
-
