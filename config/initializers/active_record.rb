@@ -23,7 +23,7 @@ module ActiveRecord
             conditions.push("%#{v}%")
         end
       end
-      where(conditions) if (conditions.length > 0)
+      where(conditions)
     end
 
     ##
