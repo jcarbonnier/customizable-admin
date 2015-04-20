@@ -1,0 +1,42 @@
+<div class="page-header clearfix">
+
+  <h1>
+    <%%= @current_model.model_name.human.pluralize %>
+
+    <div class="action-buttons-bar pull-right">
+      <%%= link_to(glyphicon(:chevron_left),
+                      <%= controller_class_name.underscore.downcase.gsub('/', '_') %>_path(keep_filters: 1), {
+                      :title => t('commons.back'),
+                      :class => 'btn btn-primary has-tooltip'}) %>
+      <%%= link_to(glyphicon(:eye_open), @item, {
+                      :title => t('commons.show'),
+                      :class => 'btn btn-primary has-tooltip'}) unless (@item.new_record?) %>
+    </div>
+  </h1>
+</div>
+<%%= simple_form_for(@item, html: {class: 'form-horizontal'}) do |f| %>
+      <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+          <div class="panel-title">
+            <h2><%%= t('commons.controller.form.panel_heading') %></h2>
+            <p class="small">
+              <%%= t("commons.controller.form.panel_introduction_html") %>
+            </p>
+          </div>
+        </div>
+        <div class="panel-body">
+          <%%#= f.error_messages %>
+          <%% for field in [<%= attributes.collect { |attr| ":#{attr.name}" }.join(', ') -%>] -%>
+          <%%= f.input field %>
+          <%% end -%>
+        </div>
+        <div class="panel-footer clearfix">
+          <%%= f.button :button,
+                          :type => 'submit',
+                          :class => 'btn btn-primary has-tooltip',
+                          :title => t('commons.save') do %>
+              <%%= glyphicon(:floppy_disk) %> <%%= t('commons.save') %>
+          <%% end %>
+        </div>
+      </div>
+<%% end %>
