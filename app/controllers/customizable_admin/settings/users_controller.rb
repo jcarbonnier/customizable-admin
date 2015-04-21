@@ -6,8 +6,8 @@ module CustomizableAdmin
     #-----
     def permissions
       @permissions = (@item.id == 1) ?
-          CustomizableAdmin::Settings::Permission.where("id=1").order('subject_class, id') :
-          CustomizableAdmin::Settings::Permission.where("id!=1").order('subject_class, id')
+          CustomizableAdmin::Settings::Permission.select("#{CustomizableAdmin::Settings::Permission.table_name}.*").where("#{CustomizableAdmin::Settings::Permission.table_name}.id=1").order("#{CustomizableAdmin::Settings::Permission.table_name}.subject_class, #{CustomizableAdmin::Settings::Permission.table_name}.id") :
+          CustomizableAdmin::Settings::Permission.select("#{CustomizableAdmin::Settings::Permission.table_name}.*").where("#{CustomizableAdmin::Settings::Permission.table_name}.id!=1").order("#{CustomizableAdmin::Settings::Permission.table_name}.subject_class, #{CustomizableAdmin::Settings::Permission.table_name}.id")
     end
 
     #----------------------------------------
