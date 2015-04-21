@@ -53,7 +53,9 @@ module CustomizableAdmin
     # Set a label with succes or not
     #-----
     def glyphicon_checked(checked)
-      return glyphicon(:ok, checked ? 'text-success' : 'text-danger')
+      return (checked) ?
+          glyphicon(:ok, 'text-success') :
+          glyphicon(:remove, 'text-danger')
     end
 
     ##

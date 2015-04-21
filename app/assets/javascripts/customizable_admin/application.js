@@ -11,8 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery-ui/sortable
 //= require jquery_ujs
+//= require jquery-ui/sortable
+//= require jquery-ui/datepicker
 // require turbolinks
 //= require_tree ./bootstrap
 //= require_tree ./utils
@@ -48,6 +49,7 @@ function ready() {
         trace("Search");
         $('#form_search').submit();
     });
+
     $('#form_search').submit(function () {
         $('#items').closest('.panel').attr('style', 'position: relative');
         $('#items').closest('.panel').overlay();
@@ -75,6 +77,28 @@ function ready() {
         } else {
             $(this).find('.glyphicon').addClass('glyphicon-chevron-up');
             $(this).find('.glyphicon').removeClass('glyphicon-chevron-down');
+        }
+    });
+
+    $('input.date_picker, input.calendar, input.datepicker').datepicker({
+        showWeek: true,
+        firstDay: 1,
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "yy-mm-dd"
+    });
+    trace( $('input.date_picker, input.calendar, input.datepicker'));
+
+    $("input.datetime_picker, input.datepicker-time, input.calendar-time").datepicker({
+        showWeek: true,
+        firstDay: 1,
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "yy-mm-dd",
+        onSelect: function (datetext) {
+            d = new Date();
+            datetext = datetext + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+            $(this).val(datetext);
         }
     });
 };

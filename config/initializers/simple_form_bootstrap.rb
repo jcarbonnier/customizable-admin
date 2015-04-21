@@ -24,10 +24,11 @@ inputs.each do |input_type|
   superclass = "SimpleForm::Inputs::#{input_type}".constantize
   new_class = Class.new(superclass) do
     def input_html_classes
+      Rails.logger.debug("input_html_classes : #{self.class.name}")
       case self.class.name
         when 'CollectionSelectInput', 'GroupedCollectionSelectInput'
           super.push('form-control chosen')
-        when 'DatePickerInput'
+        when 'DatePickerInput', 'DateTimeInput'
           super.push('form-control date_picker')
         when 'DateTimePickerInput'
           super.push('form-control datetime_picker')
