@@ -11,19 +11,18 @@ This gem uses :
 
 == Installation
 
-1/ Add to your Gemfile : gem 'customizable_admin', github: 'jcarbonnier/customizable-admin'
-2/ bundle install
-3/ rails g customizable_admin:install
-4/ rake customizable_admin:install:migrations
-5/ rake db:migrate
-6/ In config/routes.rb, add at the end of the file : mount CustomizableAdmin::Engine => "/"
+1. Add to your Gemfile : gem 'customizable_admin', github: 'jcarbonnier/customizable-admin'
+2. bundle install
+3. rails g customizable_admin:install
+4. rake customizable_admin:install:migrations
+5. rake db:migrate
+6. In config/routes.rb, add at the end of the file : mount CustomizableAdmin::Engine => "/"
 
 == Customization
 
-File /assets/application.js : remove all includes and replace them with :
+File /assets/application.js : remove all includes and replace them with
 //= require 'customizable_admin/application'
 
-Now you can check : http://localhost:3000/users/sign_in 
+Now you can check : http://localhost:3000/users/sign_in
 Login : admin@demo.com
 Password : demo-admin
-
