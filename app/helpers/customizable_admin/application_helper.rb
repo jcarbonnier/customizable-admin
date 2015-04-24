@@ -106,7 +106,8 @@ module CustomizableAdmin
       fields = form.fields_for(association, new_object, :child_index => opts[:child_index]) do |builder|
         render(:partial => template_path, :locals => {:f => builder, :new_id => "new_id"})
       end
-      link_to(name, '#', {onclick: h("add_association(this, '#{opts[:target]}', '#{association}', '#{escape_javascript(fields)}', false); $('.chosen').chosen({allow_single_deselect: true}); return false"), class: opts[:link_class]})
+      # link_to(name, '#', {onclick: h("add_association(this, '#{opts[:target]}', '#{association}', '#{escape_javascript(fields)}', false); $('.chosen').chosen({allow_single_deselect: true}); return false"), class: opts[:link_class]})
+      link_to(name, '#', {onclick: h("add_association(this, '#{opts[:target]}', '#{association}', '#{escape_javascript(fields)}', false); return false"), class: opts[:link_class]})
       # opts = {
       #     target: ".fields_#{association}",
       #     link_class: 'btn btn-xs btn-success pull-right has-tooltip',
