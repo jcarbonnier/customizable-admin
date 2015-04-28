@@ -4,6 +4,9 @@ module Models::Permission
   extend ActiveSupport::Concern
 
   included do
+    #----- Associations
+    has_many :permissions_resources
+    has_many :resources, through: :permissions_resources
 
     ##
     # Cancan abilities for models

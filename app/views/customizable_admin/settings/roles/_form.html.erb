@@ -32,10 +32,9 @@
         <% end -%>
         <h3>Permissions</h3>
         <hr/>
-        <% for p_name in @permissions.select(:subject_class, :name).distinct() %>
-
-            <ul class="list-inline">
-              <li class="col-xs-2"><%= p_name.name %></li>
+        <% for p_name in @permissions.select(:subject_class, :name).distinct().sort { |a, b| a.name<=>b.name } %>
+            <ul class="list-inline clearfix">
+              <li class="col-xs-4"><%= p_name.name %> - <%= p_name.subject_class %></li>
               <% for p in @permissions.select { |p| p.subject_class == p_name.subject_class } %>
                   <li>
                     <label>
