@@ -54,11 +54,12 @@
       </div>
       <div class="panel-body">
         <div id="filters" class="small">
-          <%= simple_form_for(@current_model.new(@default_attrs), :html => {:action => controller_name, :method => 'get', :id => 'form_search', :class => 'form-horizontal'}) do |f| %>
+          <%= simple_form_for(@current_model.new(@default_attrs),
+                              :html => {:action => controller_name, :method => 'get', :id => 'form_search', :class => 'form-horizontal'},
+                              wrapper: :horizontal_form) do |f| %>
               <% for field in [:id, :name] %>
                   <%= f.input field,
                               required: false,
-                              wrapper: :horizontal_wl,
                               placeholder: @current_model.human_attribute_name(field),
                               input_html: {size: nil, class: 'input-sm'} %>
               <% end %>

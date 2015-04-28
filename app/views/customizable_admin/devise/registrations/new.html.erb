@@ -3,14 +3,16 @@
     <div class="well clearfix">
       <h2>Création de compte</h2>
       <hr/>
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => 'form-horizontal'}) do |f| %>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),
+                          :html => {:class => 'form-horizontal'},
+                          wrapper: :horizontal_form_wl) do |f| %>
           <%= devise_error_messages! %>
-          <%= f.input :civility, collection: ['M', 'Mme', 'Melle'], wrapper: :horizontal_wl %>
-          <%= f.input :firstname, placeholder: "First name", wrapper: :horizontal_wl %>
-          <%= f.input :lastname, placeholder: "Lastname", wrapper: :horizontal_wl %>
-          <%= f.input :email, placeholder: "Email", wrapper: :horizontal_wl %>
-          <%= f.input :password, autocomplete: "off", placeholder: "Mot de passe", wrapper: :horizontal_wl %>
-          <%= f.input :password_confirmation, autocomplete: "off", placeholder: "Confirmation du mot de passe", wrapper: :horizontal_wl %>
+          <%= f.input :civility, collection: ['M', 'Mme', 'Melle'] %>
+          <%= f.input :firstname, placeholder: "First name" %>
+          <%= f.input :lastname, placeholder: "Lastname" %>
+          <%= f.input :email, placeholder: "Email" %>
+          <%= f.input :password, autocomplete: "off", placeholder: "Mot de passe" %>
+          <%= f.input :password_confirmation, autocomplete: "off", placeholder: "Confirmation du mot de passe" %>
           <%= f.submit "Créer mon compte", class: 'btn btn-block btn-primary' %>
 
       <% end %>

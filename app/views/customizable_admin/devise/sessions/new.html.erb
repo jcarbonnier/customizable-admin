@@ -3,11 +3,11 @@
     <div class="well clearfix">
       <h2>Connexion</h2>
       <hr/>
-      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}, wrapper: :horizontal_form_wl) do |f| %>
           <%= devise_error_messages! %>
 
-          <%= f.input :email, placeholder: "Email", wrapper: :horizontal_wl %>
-          <%= f.input :password, autocomplete: "off", placeholder: "Mot de passe", wrapper: :horizontal_wl %>
+          <%= f.input :email, placeholder: "Email" %>
+          <%= f.input :password, autocomplete: "off", placeholder: "Mot de passe" %>
           <% if devise_mapping.rememberable? -%>
               <div class="field">
                 <%#= f.check_box :remember_me %>

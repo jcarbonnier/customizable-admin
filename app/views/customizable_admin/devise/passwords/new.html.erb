@@ -3,10 +3,12 @@
     <div class="well clearfix">
       <h2>Mot de passe oublié ?</h2>
       <hr/>
-      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post, class: 'form-horizontal'}) do |f| %>
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name),
+                          html: {method: :post, class: 'form-horizontal'},
+                          wrapper: :horizontal_form_wl) do |f| %>
           <%= devise_error_messages! %>
 
-          <%= f.input :email, placeholder: "Email", wrapper: :horizontal_wl %>
+          <%= f.input :email, placeholder: "Email" %>
           <%= f.submit "Réinitialiser mon mot de passe", class: 'btn btn-block btn-primary' %>
 
       <% end %>

@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency "jquery-ui-rails"#, "~> 5.0.3"
   # s.add_dependency 'turbolinks', "~> 2.5.3"
   # s.add_dependency "less-rails", "~> 2.6.0"
-  s.add_dependency "simple_form", "~> 3.1.0"
+  s.add_dependency "simple_form", "~> 3.1"
   s.add_dependency "cancancan", '~> 1.10'
   s.add_dependency "will_paginate", '~> 3.0.7'
   s.add_dependency "ancestry"

@@ -4,10 +4,12 @@
       <h2>Resend confirmation instructions</h2>
       <hr/>
 
-      <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: {method: :post, class: 'form-horizontal'}) do |f| %>
+      <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name),
+                          html: {method: :post, class: 'form-horizontal'},
+                          wrapper: :horizontal_form_wl) do |f| %>
           <%= devise_error_messages! %>
 
-          <%= f.input :email, placeholder: "Email", wrapper: :horizontal_wl, input_html: {autofocus: true} %>
+          <%= f.input :email, placeholder: "Email", input_html: {autofocus: true} %>
           <%= f.submit "Resend confirmation instructions", class: 'btn btn-block btn-primary' %>
 
       <% end %>

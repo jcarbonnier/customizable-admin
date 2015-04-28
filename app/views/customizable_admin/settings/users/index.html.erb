@@ -17,7 +17,9 @@
   </h1>
 </div>
 
-<%= simple_form_for(@current_model.new(@default_attrs), :html => {:action => controller_name, :method => 'get', :id => 'form_search', :class => 'form-inline'}) do |f| %>
+<%= simple_form_for(@current_model.new(@default_attrs),
+                    :html => {:action => controller_name, :method => 'get', :id => 'form_search', :class => 'form-inline'},
+                    wrapper: :inline_form) do |f| %>
     <div id="accordion" class="panel panel-default">
       <div class="panel-heading clearfix">
         <div class="btn-toolbar pull-right">
@@ -40,7 +42,6 @@
           <% for field in [:id, :email, :firstname, :lastname] %>
               <%= f.input field,
                           required: false,
-                          wrapper: :inline,
                           placeholder: @current_model.human_attribute_name(field),
                           input_html: {size: nil, class: 'input-sm'} %>
           <% end %>
