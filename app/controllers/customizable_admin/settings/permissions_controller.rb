@@ -1,18 +1,19 @@
 module CustomizableAdmin
-  class Settings::PermissionsController < AuthorizationsController
+  class Settings::PermissionsController < ApplicationController
+
+    # Include needed concerns
+    include Controllers::DefaultController
+    include Controllers::PrivateController
 
     ##
     # Setup permissions
     #-----
     def setup_actions_controllers_db
-
       write_permission("all", "manage", "Everything", "All operations", true)
-
       @models = ActiveRecord::Base.subclasses.select { |type|
         type.name unless (type.name.match('HABTM'))
       }
-      Rails.logger.debug("Models : #{@models.inspect}")
-      # You can change ApplicationController for a super-class used by your restricted controllers
+      # Rails.logger.debug("Models : #{@models.inspect}")
       @models.each do |mod|
         Rails.logger.debug("Model : #{mod}")
         CustomizableAdmin::Settings::Permission.abilities(mod).each do |ability|
@@ -26,9 +27,6 @@ module CustomizableAdmin
     protected
     #----------------------------------------
 
-    ##
-    # Initialiaze application
-    #-----
     def initialize_application
       super()
       add_breadcrumb(Settings::Permission.model_name.human.pluralize, :settings_permissions)
@@ -52,9 +50,6 @@ module CustomizableAdmin
       return :settings_permission
     end
 
-    ##
-    # Default sort column
-    #-----
     def sort_column
       return "#{@current_model.table_name}.subject_class, #{@current_model.table_name}.id" unless (params[:sort])
       super()

@@ -1,20 +1,14 @@
 module CustomizableAdmin
-  class Settings::MenusController < AuthorizationsController
+  class Settings::MenusController < ApplicationController
+
+    # Include needed concerns
+    include Controllers::DefaultController
+    include Controllers::PrivateController
 
     #----------------------------------------
     protected
     #----------------------------------------
 
-    ##
-    # Sort columns
-    #-----
-    def sort_column
-      return "position"
-    end
-
-    ##
-    # Initialiaze application
-    #-----
     def initialize_application
       super()
       add_breadcrumb(Settings::Menu.model_name.human.pluralize, :settings_menus)
@@ -24,6 +18,10 @@ module CustomizableAdmin
         add_breadcrumb(t('breadcrumbs.actions.show'), settings_menu_path(params[:id]))
         add_breadcrumb(t('breadcrumbs.actions.edit'), edit_settings_menu_path(params[:id])) if (['edit', 'update'].include?(action_name))
       end
+    end
+
+    def sort_column
+      return "position"
     end
 
     #----------------------------------------

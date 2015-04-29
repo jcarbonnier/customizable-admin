@@ -1,33 +1,25 @@
 module CustomizableAdmin
-  class Settings::RolesController < AuthorizationsController
+  class Settings::RolesController < ApplicationController
 
-    ##
-    #
-    #-----
+    # Include needed concerns
+    include Controllers::DefaultController
+    include Controllers::PrivateController
+
     def new
       initialize_permissions()
       super()
     end
 
-    ##
-    #
-    #-----
     def edit
       initialize_permissions()
       super()
     end
 
-    ##
-    #
-    #-----
     def update
       initialize_permissions()
       super()
     end
 
-    ##
-    #
-    #-----
     def show
       initialize_permissions()
       super()

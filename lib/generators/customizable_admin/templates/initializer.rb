@@ -3,5 +3,6 @@ CustomizableAdmin.setup do |config|
 
   # Layout to use
   config.cadm_layout = 'customizable_admin/application'
+  config.devise_layout = 'customizable_admin/application'
 
 end

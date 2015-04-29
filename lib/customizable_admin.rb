@@ -6,6 +6,9 @@ module CustomizableAdmin
   mattr_accessor :cadm_layout
   @@cadm_layout = 'customizable_admin/application'
 
+  mattr_accessor :devise_layout
+  @@devise_layout = 'customizable_admin/application'
+
   # 401 unauthorized redirect subdomain used by Devise
   mattr_accessor :cadm_subdomain
   @@cadm_subdomain = nil

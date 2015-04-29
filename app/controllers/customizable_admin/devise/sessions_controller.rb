@@ -1,7 +1,7 @@
 module CustomizableAdmin::Devise
   class SessionsController < Devise::SessionsController
 
-    layout CustomizableAdmin.cadm_layout # 'customizable_admin/application'
+    # layout CustomizableAdmin.cadm_layout # 'customizable_admin/application'
     helper CustomizableAdmin::ApplicationHelper
     prepend_before_filter :check_user_confirmation, only: [:create]
 

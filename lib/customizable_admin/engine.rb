@@ -33,8 +33,11 @@ module CustomizableAdmin
 
     # Devise layouts
     config.to_prepare do
-      Devise::SessionsController.layout CustomizableAdmin.cadm_layout # "customizable_admin/application"
-      Devise::RegistrationsController.layout CustomizableAdmin.cadm_layout # "customizable_admin/application"
+      Devise::ConfirmationsController.layout CustomizableAdmin.devise_layout
+      Devise::PasswordsController.layout CustomizableAdmin.devise_layout
+      Devise::RegistrationsController.layout CustomizableAdmin.devise_layout
+      Devise::SessionsController.layout CustomizableAdmin.devise_layout
+      Devise::UnlocksController.layout CustomizableAdmin.devise_layout
     end
 
   end

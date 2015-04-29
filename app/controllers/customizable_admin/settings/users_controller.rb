@@ -1,5 +1,9 @@
 module CustomizableAdmin
-  class Settings::UsersController < AuthorizationsController
+  class Settings::UsersController < ApplicationController
+
+    # Include needed concerns
+    include Controllers::DefaultController
+    include Controllers::PrivateController
 
     ##
     # Set custom permissions for the user
