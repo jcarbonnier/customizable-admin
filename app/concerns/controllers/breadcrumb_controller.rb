@@ -1,3 +1,5 @@
+require 'active_support/concern'
+
 module Controllers::BreadcrumbController
   extend ActiveSupport::Concern
 
