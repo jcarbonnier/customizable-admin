@@ -11,6 +11,8 @@ module Models::User
     has_many :permissions_roles, through: :roles, :class_name => 'CustomizableAdmin::Settings::PermissionsResource'
     has_many :permissions_users, as: :resource, class_name: "CustomizableAdmin::Settings::PermissionsResource"
     has_many :permissions, through: :permissions_users, :class_name => 'CustomizableAdmin::Settings::Permission'
+    #----- Validations
+    validates :email, presence: true, uniqueness: true
 
     ##
     # Check if user has role

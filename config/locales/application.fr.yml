@@ -49,6 +49,14 @@ fr:
     cart: Ajouter au panier
     wish_list: Ajouter à ma liste de souhaits
     favored: Ajouter à mes favoris
+    create_account: Créer mon compte
+    sign_in: Je me connecte
+    update: Mettre à jour
+    resend_unlock_instructions: Renvoyer les instructions de déblocage
+    resend_confirmation_instructions: Renvoyer les instructions de confirmation
+    reset_password: Remise à zéro du mot de passe
+    change_password: Changer mon mot de passe
+    delete: Supprimer
 
 #----------------------------------------
 # Breadcrumbs
@@ -67,6 +75,16 @@ fr:
     home: Accueil
 
 #----------------------------------------
+# Header
+#----------------------------------------
+  header:
+    welcome: "Bienvenue %{first_name}"
+    my_account: Mon compte
+    my_profile: Mon profil
+    delete_my_account: Supprimer mon compte
+    sign_out: Déconnexion
+
+#----------------------------------------
 # Models
 #----------------------------------------
   activerecord:
@@ -75,38 +93,62 @@ fr:
       user: Utilisateur
       role: Rôle
       roles_user: Utilisateur / Rôle
-      category: Catégorie
-      localized_content: Contenu
-      book: Livre
-      books_categories: Catégories de livre
-      books_chapter: Chapitre
-      books_page: Page
 
 #----------------------------------------
 # Attributes
 #----------------------------------------
-    attributes:
+    attributes: &ar_attributes
       commons: &commons_attributes
         id: Id.
         created_at: Créé le
         updated_at: M.A.J. le
-      user:
-        id: Id.
+      user: &user_attrs
         email: Email
         password: Mot de passe
         password_confirmation: Confirmation du mot de passe
+        password_current: Mot de passe actuel
         sign_in_count: Nb. de connexions
         current_sign_in_at: Connecté le
         current_sign_in_ip: Ip courante
         last_sign_in_at: Dernière connexion le
         last_sign_in_ip: Dernière ip de connexion
         <<: *commons_attributes
+      role: &role_attrs
+        name: Nom
+        <<: *commons_attributes
       roles_user:
         role_id: Rôle
         user_id: Utilisateur
-      role:
-        id: Id.
-        name: Nom
-        created_at: Créé le
-        updated_at: MAJ le
+      permission: &permission_attrs
+        name: Name
+        subject_class: Subject class
+        subject_id: Subject
+        action: Action
+        description: Description
+        <<: *commons_attributes
+      # Main app adaptations
+      customizable_admin/settings/user:
+        <<: *user_attrs
+      customizable_admin/settings/role:
+        <<: *role_attrs
+      customizable_admin/settings/permission:
+        <<: *permission_attrs
 
+#----------------------------------------
+# Simple form automatic labels translations
+#----------------------------------------
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+    error_notification:
+      default_message: "Please review the problems below:"
+    labels:
+      settings_user:
+        <<: *user_attrs
+      settings_role:
+        <<: *role_attrs
+      settings_permission:
+        <<: *permission_attrs

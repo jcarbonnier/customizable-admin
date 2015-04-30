@@ -6,15 +6,15 @@
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}, wrapper: :horizontal_form_wl) do |f| %>
           <%= devise_error_messages! %>
 
-          <%= f.input :email, placeholder: "Email" %>
-          <%= f.input :password, autocomplete: "off", placeholder: "Mot de passe" %>
+          <%= f.input :email, placeholder: t('activerecord.attributes.user.email') %>
+          <%= f.input :password, autocomplete: "off", placeholder: t('activerecord.attributes.user.password') %>
           <% if devise_mapping.rememberable? -%>
               <div class="field">
                 <%#= f.check_box :remember_me %>
                 <%#= f.label :remember_me %>
               </div>
           <% end -%>
-          <%= f.submit "Je me connecte", class: 'btn btn-block btn-primary' %>
+          <%= f.submit t('buttons.sign_in'), class: 'btn btn-block btn-primary' %>
       <% end %>
       <hr>
       <%= render "customizable_admin/partials/devise_links" %>

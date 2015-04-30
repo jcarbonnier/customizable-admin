@@ -49,26 +49,6 @@
       <% if (user_signed_in?) %>
           <nav class="main-nav">
             <div id="accordion" role="tablist" aria-multiselectable="true" class="list-group">
-              <div class="list-group-item list-group-item-no-padding">
-                <%= image_tag('profile-menu.png', class: 'img-responsive') %>
-              </div>
-              <%= link_to("#collapseProfile",
-                          class: 'list-group-item',
-                          'data-toggle' => "collapse",
-                          'data-parent' => "#accordionProfile",
-                          'aria-expanded' => "true",
-                          'aria-controls' => "collapseProfile") do %>
-                  Bienvenue <%= current_user.firstname %> <span class="caret"></span>
-              <% end %>
-              <div id="collapseProfile" class="collapse" role="tabpanel" aria-labelledby="headingProfile">
-                <%= link_to(customizable_admin.edit_user_registration_path(current_user), class: 'list-group-item') do %>
-                    <%= glyphicon(:user) %> Mon profil
-                <% end %>
-                <%= link_to(customizable_admin.destroy_user_session_path, method: 'delete', class: 'list-group-item') do %>
-                    <%= glyphicon(:log_out) %> Déconnexion
-                <% end %>
-              </div>
-              <div class="list-group-item divider"></div>
               <%= render(partial: 'customizable_admin/partials/menu',
                          collection: CustomizableAdmin::Settings::Menu.order(:position)) %>
             </div>

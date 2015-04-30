@@ -8,8 +8,8 @@
                           wrapper: :horizontal_form_wl) do |f| %>
           <%= devise_error_messages! %>
 
-          <%= f.input :email, placeholder: "Email" %>
-          <%= f.submit "Réinitialiser mon mot de passe", class: 'btn btn-block btn-primary' %>
+          <%= f.input :email, placeholder: t('activerecord.attributes.user.email') %>
+          <%= f.submit t('buttons.reset_password'), class: 'btn btn-block btn-primary' %>
 
       <% end %>
       <hr>

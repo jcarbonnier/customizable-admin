@@ -9,8 +9,8 @@
                           wrapper: :horizontal_form_wl) do |f| %>
           <%= devise_error_messages! %>
 
-          <%= f.input :email, placeholder: "Email", input_html: {autofocus: true} %>
-          <%= f.submit "Resend confirmation instructions", class: 'btn btn-block btn-primary' %>
+          <%= f.input :email, placeholder: t('activerecord.attributes.user.email'), input_html: {autofocus: true} %>
+          <%= f.submit t('buttons.resend_confirmation_instructions'), class: 'btn btn-block btn-primary' %>
 
       <% end %>
       <hr/>

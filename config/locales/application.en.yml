@@ -5,107 +5,150 @@ en:
 # Commons
 #----------------------------------------
   commons:
-    back: Retour à la liste
-    save: Enregistrer la fiche
-    show: Voir la fiche
-    permissions: Editer les permissions
-    email: Envoyer un email
-    edit: Editer la fiche
-    create: Créer
-    refresh: Rafraichir
-    delete: Effacer
-    move: Gérer les positions
-    export: Exporter
-    filters_visibility: Afficher / Masquer les filtres
+    back: Back to the list
+    save: Save record
+    show: Show record
+    edit: Edit record
+    permissions: Edit permissions
+    email: Send email
+    create: Create a record
+    refresh: Refresh
+    delete: Delete record
+    move: Manage positions
+    export: Export the list of records
+    filters_visibility: Show / Hide filters
     controller:
-      h1: Liste des élements
-      h1_introduction_html: "Retrouvez la liste des éléments enregistrés en base de données.<br/>Vous pouvez les rechercher et les filtrer à l'aide du formulaire ci-dessous."
+      h1: List of records
+      h1_introduction_html: "This is the list of records in the database.<br/>You can search and filter them using the form below."
       index:
-        panel_heading: Liste des éléments
-        panel_introduction_html: "Retrouvez la liste des fiches enregistrées en base de données.<br/>Vous pouvez les rechercher et les filtrer à l'aide du formulaire."
+        panel_heading: List of records
+        panel_introduction_html: "This is the list of records stored in the database.<br/>You can search and filter them using the form below."
       form:
-        panel_heading: Formulaire
-        panel_introduction_html: "Créez ou éditez une fiche dans la base de données."
+        panel_heading: Form
+        panel_introduction_html: "Create or edit a record in the database."
       show:
-        panel_heading: Fiche
-        panel_introduction_html: "Retrouvez les données de la fiche enregistrées en base de données."
-    shopping_cart: Ajouter au panier
-    favored: Mes favoris
-    wish_list: Ma liste de souhait
+        panel_heading: Record
+        panel_introduction_html: "Record data stored in database."
+    shopping_cart: Add to cart
+    favored: Favored
+    wish_list: Wish list
 
 #----------------------------------------
 # Buttons
 #----------------------------------------
   buttons:
-    close_modal: Fermer la fenêtre
-    search: Rechercher
-    filter: Filtrer
-    reset: R.A.Z des filtres
-    send_email: Envoyer le message
+    close_modal: Close the popup
+    search: Search
+    filter: Filter
+    reset: Clear filters
+    send_email: Send email
     add_icon_html: <span class="glyphicon glyphicon-plus"></span>
     export_icon_html: <span class="glyphicon glyphicon-export"></span>
     filter_icon_html: <span class="glyphicon glyphicon-filter"></span>
     clear_icon_html: <span class="glyphicon glyphicon-ban-circle"></span>
-    cart: Ajouter au panier
-    wish_list: Ajouter à ma liste de souhaits
-    favored: Ajouter à mes favoris
+    cart: Add to cart
+    wish_list: Wish list
+    favored: Favored
+    create_account: Create my account
+    sign_in: Sign in
+    update: Update
+    resend_unlock_instructions: Resend unlock instructions
+    resend_confirmation_instructions: Resend confirmation instructions
+    reset_password: Reset my password
+    change_password: Change my password
+    delete: Delete
 
 #----------------------------------------
 # Breadcrumbs
 #----------------------------------------
   breadcrumbs:
     actions:
-      index: Liste
-      new: "Nouvelle fiche"
-      edit: Edition
-      show: Fiche
-      manage_positions: Gestion des positions
-      manage_permissions: Permissions
+      index: List
+      new: New record
+      edit: Edit record
+      show: Show record
+      manage_positions: Manage positions
+      manage_permissions: Manage permissions
     admin:
-      root: Administration
-    root: Accueil
-    home: Accueil
+      root: Admin
+    root: Home
+    home: Home
+
+#----------------------------------------
+# Header
+#----------------------------------------
+  header:
+    welcome: "Welcome %{first_name}"
+    my_account: My account
+    my_profile: My profile
+    sign_out: Logout
+    delete_my_account: Delete my account
 
 #----------------------------------------
 # Models
 #----------------------------------------
   activerecord:
     models:
-      admin/catalog/product: Produit
-      user: Utilisateur
-      role: Rôle
-      roles_user: Utilisateur / Rôle
-      category: Catégorie
-      localized_content: Contenu
-      book: Livre
-      books_categories: Catégories de livre
-      books_chapter: Chapitre
-      books_page: Page
+      admin/catalog/product: Product
+      user: User
+      role: Role
+      roles_user: User role
 
 #----------------------------------------
 # Attributes
 #----------------------------------------
-    attributes:
+    attributes: &ar_attributes
       commons: &commons_attributes
         id: Id.
-        created_at: Créé le
-        updated_at: M.A.J. le
-      user:
-        id: Id.
+        created_at: Created at
+        updated_at: Updated at
+      user: &user_attrs
         email: Email
-        password: Mot de passe
-        password_confirmation: Confirmation du mot de passe
-        sign_in_count: Nb. de connexions
-        current_sign_in_at: Connecté le
-        current_sign_in_ip: Ip courante
-        last_sign_in_at: Dernière connexion le
-        last_sign_in_ip: Dernière ip de connexion
+        password: Password
+        password_confirmation: Password confirmation
+        password_current: Current password
+        sign_in_count: Sign in count
+        current_sign_in_at: Current sign in at
+        current_sign_in_ip: Current sign in IP
+        last_sign_in_at: Last sign in at
+        last_sign_in_ip: Last sign in IP
+        <<: *commons_attributes
+      role: &role_attrs
+        name: Name
         <<: *commons_attributes
       roles_user:
-        role_id: Rôle
-        user_id: Utilisateur
-      role:
-        id: Id.
-        name: Nom
-        created_at: Créé le
-        updated_at: MAJ le
+        role_id: Role
+        user_id: User
+      permission: &permission_attrs
+        name: Name
+        subject_class: Subject class
+        subject_id: Subject
+        action: Action
+        description: Description
+        <<: *commons_attributes
+      # Main app adaptations
+      customizable_admin/settings/user:
+        <<: *user_attrs
+      customizable_admin/settings/role:
+        <<: *role_attrs
+      customizable_admin/settings/permission:
+        <<: *permission_attrs
+
+#----------------------------------------
+# Simple form automatic labels translations
+#----------------------------------------
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+    error_notification:
+      default_message: "Please review the problems below:"
+    labels:
+      settings_user:
+        <<: *user_attrs
+      settings_role:
+        <<: *role_attrs
+      settings_permission:
+        <<: *permission_attrs

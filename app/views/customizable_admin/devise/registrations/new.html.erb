@@ -8,12 +8,12 @@
                           wrapper: :horizontal_form_wl) do |f| %>
           <%= devise_error_messages! %>
           <%= f.input :civility, collection: ['M', 'Mme', 'Melle'] %>
-          <%= f.input :firstname, placeholder: "First name" %>
-          <%= f.input :lastname, placeholder: "Lastname" %>
-          <%= f.input :email, placeholder: "Email" %>
-          <%= f.input :password, autocomplete: "off", placeholder: "Mot de passe" %>
-          <%= f.input :password_confirmation, autocomplete: "off", placeholder: "Confirmation du mot de passe" %>
-          <%= f.submit "Créer mon compte", class: 'btn btn-block btn-primary' %>
+          <%= f.input :firstname, placeholder: t('activerecord.attributes.user.firstname') %>
+          <%= f.input :lastname, placeholder: t('activerecord.attributes.user.lastname') %>
+          <%= f.input :email, placeholder: t('activerecord.attributes.user.email') %>
+          <%= f.input :password, autocomplete: "off", placeholder: t('activerecord.attributes.user.password') %>
+          <%= f.input :password_confirmation, autocomplete: "off", placeholder: t('activerecord.attributes.user.password_confirmation') %>
+          <%= f.submit t('buttons.create_account'), class: 'btn btn-block btn-primary' %>
 
       <% end %>
       <hr>

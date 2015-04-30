@@ -8,9 +8,9 @@
           <%= devise_error_messages! %>
           <%= f.hidden_field :reset_password_token %>
 
-          <%= f.input :password, autofocus: true, autocomplete: "off", placeholder: 'Nouveau mot de passe' %>
-          <%= f.input :password_confirmation, autocomplete: "off", placeholder: 'Confirmation du mot de passe' %>
-          <%= f.submit "Changer le mot de passe", class: 'btn btn-block btn-primary' %>
+          <%= f.input :password, autofocus: true, autocomplete: "off", placeholder: t('activerecord.attributes.user.password') %>
+          <%= f.input :password_confirmation, autocomplete: "off", placeholder: t('activerecord.attributes.user.password_confirmation') %>
+          <%= f.submit t('buttons.change_password'), class: 'btn btn-block btn-primary' %>
 
       <% end %>
       <hr>

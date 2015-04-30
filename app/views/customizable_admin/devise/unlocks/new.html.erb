@@ -10,7 +10,7 @@
           <%= devise_error_messages! %>
 
           <%= f.input :email, placeholder: "Email", input_html: {autofocus: true} %>
-          <%= f.submit "Resend unlock instructions", class: 'btn btn-block btn-primary' %>
+          <%= f.submit t('buttons.resend_unlock_instructions'), class: 'btn btn-block btn-primary' %>
       <% end %>
       <hr/>
       <%= render "customizable_admin/partials/devise_links" %>
